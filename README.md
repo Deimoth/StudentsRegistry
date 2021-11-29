@@ -1,8 +1,8 @@
-Java 8
-Spring Framework
-Maven
-H2 database
-AngularJS
+Java8   
+SpringFramework     
+Maven   
+H2database  
+AngularJS   
 
 
 ABOUT
