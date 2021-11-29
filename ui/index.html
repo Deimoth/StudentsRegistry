@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Students registry</title>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+<body>
+<div ng-controller="LonelyController" ng-init="init()">
+    <table>
+        <tr>
+            <td>
+                <button ng-click="getList()">Refresh list</button>
+                <button ng-click="createStudentButton()">Add student</button>
+                <table class="myTable">
+                    <thead>
+                    <th>Personal number</th>
+                    <th>Name</th>
+                    <th>Second name</th>
+                    <th>Surname</th>
+                    <th>Birthdate</th>
+                    <th>Group</th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="student in students"
+                        ng-click="onRowSelect(student)"
+                        ng-class="selectedNumber === student.number ? 'selected' : ''">
+                        <td>{{student.number}}</td>
+                        <td>{{student.name}}</td>
+                        <td>{{student.secondName}}</td>
+                        <td>{{student.surname}}</td>
+                        <td>{{student.birthDay | date : 'yyyy-MM-dd'}}</td>
+                        <td>{{student.groupName}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td>
+                <div ng-hide="!!selectedStudent">
+                    <label class="hint">
+                        Choose student or add new
+                    </label>
+                </div>
+                <div ng-show="!!errorsMap.common">
+                    <label class="error">
+                        {{errorsMap.common}}
+                    </label>
+                </div>
+                <div ng-hide="!selectedStudent">
+                    <div>
+                        <label>Personal number:</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.number" ng-disabled="userMode === 'edit'">
+                        <br/>
+                        <label ng-show="!!errorsMap.number"
+                               class="error">
+                            {{errorsMap.number}}
+                        </label>
+                    </div>
+                    <div>
+                        <label>Name:</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.name">
+                    </div>
+                    <div>
+                        <label>Second name:</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.secondName">
+                    </div>
+                    <div>
+                        <label>Surname:</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.surname">
+                    </div>
+                    <div>
+                        <label>Birthdate (yyyy-mm-dd):</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.birthDay">
+                    </div>
+                    <div>
+                        <label>Group:</label>
+                        <br/>
+                        <input type="text" ng-model="selectedStudent.groupName">
+                    </div>
+
+                    <button ng-if="userMode === 'edit'" ng-click="updateStudent(selectedStudent)">Update</button>
+                    <button ng-if="userMode === 'new'" ng-click="createStudent(selectedStudent)">Add</button>
+                    <button ng-if="userMode === 'edit'" ng-click="removeStudent(selectedStudent)">Remove</button>
+                    <button ng-if="userMode === 'new'" ng-click="init()">Cancel</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="controllers/controller.js"></script>
+</body>
+</html>

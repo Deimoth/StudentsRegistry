@@ -1,0 +1,100 @@
+.myTable {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 14px;
+    width: 640px;
+    text-align: left;
+    border-collapse: collapse;
+    margin: 10px;
+}
+.myTable th {
+    color: #000000;
+    border-bottom: 1px solid #000000;
+    padding: 12px 17px;
+}
+.myTable td {
+    color: #000000;
+    border-bottom: 1px solid #000000;
+    border-right:1px solid #000000;
+    padding: 7px 17px;
+}
+.myTable td:last-child {
+    border-right: none;
+}
+.myTable tr:hover td {
+    text-decoration: underline;
+}
+
+.selected {
+    background: #dddddd;
+}
+
+.hint {
+    color: #404040;
+}
+
+.error {
+    color: #b21b0f;
+}
+
+label {
+    color: #000000;
+}
+
+td {
+    vertical-align: top;
+}
+
+button {
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    padding: 5px 15px;
+    color: #000000;
+    border: 1px solid #000000;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: .3s linear;
+}
+
+button:before, button:after, .link-content:before, .link-content:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 15px;
+    height: 15px;
+    transition: .3s linear;
+}
+
+button:before {
+    left: -1px;
+    top: -1px;
+    border-left: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+button:after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid #000000;
+    border-right: 1px solid #000000;
+}
+
+.link-content:after {
+    right: -1px;
+    top: -1px;
+    border-right: 1px solid #000000;
+    border-top: 1px solid #000000;
+}
+
+.link-content:before {
+    left: -1px;
+    bottom: -1px;
+    border-bottom: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+button:hover {
+    color: #000000;
+    border-color: #000000;
+}
